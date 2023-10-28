@@ -1,5 +1,4 @@
 import os
 def execIW():
-    cmd = "ip link show | tee interfaces.txt"
+    cmd = "ip link show > interfaces.txt"
     os.system(cmd)
-    os.system("clear")
