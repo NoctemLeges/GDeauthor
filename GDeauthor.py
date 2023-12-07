@@ -18,7 +18,7 @@ def main():
     if(checkMonitor(interface)==-1):
         deactivateMonitorMode(interface)
     print("[+]Activating Monitor Mode...\n\nHowever, before we do that")
-    APlist = listAccessPoints(interface)
+    APlist = listAccessPoints()
     print("[+]Choose your target:")
     for AP in APlist:
         print(AP)

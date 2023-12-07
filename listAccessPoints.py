@@ -1,14 +1,13 @@
 import os
 
-def listAccessPoints(interface):
-    AP=[]
-    cmd = f"sudo iwlist {interface} scanning > APoutput.txt"
+def listAccessPoints():
+    AP=set()
+    cmd = f"nmcli -t device wifi list> APoutput.txt"
     os.system(cmd)
     with open("APoutput.txt","r") as f:
         lines = f.readlines()
     os.system("rm APoutput.txt")
 
     for line in lines:
-        if "ESSID:" in line:
-            AP.append(line.split("ESSID:")[1].strip('"').rstrip('"\n'))
+        AP.add(line[25:].split(":")[0])
     return AP

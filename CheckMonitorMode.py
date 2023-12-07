@@ -1,7 +1,7 @@
 import os
 def checkMonitor(interface):
     cmd1 = f"sudo airmon-ng start {interface} > monitorOutput.txt"
-    cmd2 = f"sudo airmon-ng stop {interface}mon > /dev/null"
+    cmd2 = f"sudo airmon-ng stop wlan0mon > /dev/null"
     os.system(cmd1)
     os.system(cmd2)
     #os.system("clear")
