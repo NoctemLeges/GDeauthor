@@ -9,7 +9,6 @@ def main():
     for key in interfaces:
         print(str(key)+">" +interfaces[key])
     interfaceNum = int(input("[+]Enter Interface Num:"))
-    print("DEBUG:INTERFACE NUM=",interfaceNum)
     if interfaceNum not in list(interfaces.keys()):
         print("[-]Choose a proper Interface")
         exit()
