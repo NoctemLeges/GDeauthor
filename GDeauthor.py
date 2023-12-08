@@ -6,12 +6,15 @@ from DeactivateMonitorMode import deactivateMonitorMode
 def main():
     print("Welcome to GDeauthor! Select a Network Interface that supports Monitor Mode and Packet Injection. Here are the list of available interfaces:")
     interfaces = listInterfaces()
-    for interface in interfaces:
-        print(interface)
-    interface = input("[+]Enter Interface:")
-    if interface not in interfaces:
+    for key in interfaces:
+        print(str(key)+">" +interfaces[key])
+    interfaceNum = int(input("[+]Enter Interface Num:"))
+    print("DEBUG:INTERFACE NUM=",interfaceNum)
+    if interfaceNum not in list(interfaces.keys()):
         print("[-]Choose a proper Interface")
         exit()
+    else:
+        interface = interfaces[interfaceNum]
     if(not checkMonitor(interface)):
        print("[-]Interface does not support monitor mode.")
        exit()
