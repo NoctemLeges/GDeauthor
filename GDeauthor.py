@@ -43,6 +43,7 @@ def main():
     print("Also,")
     activateMonitorMode(interface)
     print("[+]Monitor Mode Activated!Yay")
+    print("[+]Getting required information to carry out attack...")
     MACs = getMACAddresses(targetAP)
     if MACs["Client MAC"] == 0:
         print("No clients are connected to the AP. Cannot perform Deauthentication")
