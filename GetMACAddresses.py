@@ -14,5 +14,5 @@ def getMACAddresses(AP):
     MACs["Client MAC"] = returnClientMAC(MACs["AP MAC"])
     for line in lines:
         if AP in line:
-            MACs["AP Channel"] = int(line.split(" "*7)[1])
+            MACs["AP Channel"] = int(line.split()[3])
     return MACs

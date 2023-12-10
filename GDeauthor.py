@@ -52,7 +52,7 @@ def main():
     print("MAC Address of Client: ",MACs["Client MAC"])
     print("Channel for AP: ",MACs["AP Channel"])
     logPackets(MACs["AP Channel"],MACs["AP MAC"],MACs["Client MAC"])
-    deactivateMonitorModeAir(interface)
+    deactivateMonitorModeAir("wlan0")
 
 
 
