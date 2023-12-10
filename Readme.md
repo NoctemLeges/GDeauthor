@@ -24,3 +24,4 @@
 3. Weird issues persisting in scanning. Try to kill conflicting processes [FIXED]
 4. Unpredictable naming conventions of the Interfaces is problematic 
 5. Packet Injection test does not work if interface is in Monitor Mode already.
+6. The Clients take variable time to reconnect to target AP. Gotta ccount for it.

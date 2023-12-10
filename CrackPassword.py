@@ -26,7 +26,7 @@ def logPackets(channel,APMAC,ClientMAC):
     
     t1 = threading.Thread(target=deauthFunc,args=[APMAC,ClientMAC])
     t1.start() #Start Deauthing
-    time.sleep(10)
+    time.sleep(20)
     t1.join()
     PID.send_signal(signal.SIGINT)
     crack()
