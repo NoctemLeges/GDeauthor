@@ -29,5 +29,6 @@ def logPackets(channel,APMAC,ClientMAC):
     time.sleep(20)
     t1.join()
     PID.send_signal(signal.SIGINT)
+    time.sleep(5)
     crack()
     cleanup()

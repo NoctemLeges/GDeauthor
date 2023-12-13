@@ -8,6 +8,22 @@ from DeactivateMonitorMode import deactivateMonitorModeMain
 from GetMACAddresses import getMACAddresses
 from CrackPassword import logPackets
 def main():
+
+                                                                                                                                   
+    print("      _____         _____        ______          ____    ____   ____  _________________  ____   ____         _____         _____   ")
+    print("  ___|\    \    ___|\    \   ___|\     \    ____|\   \  |    | |    |/                 \|    | |    |   ____|\    \    ___|\    \  ")
+    print(" /    /\    \  |    |\    \ |     \     \  /    /\    \ |    | |    |\______     ______/|    | |    |  /     /\    \  |    |\    \ ")
+    print("|    |  |____| |    | |    ||     ,_____/||    |  |    ||    | |    |   \( /    /  )/   |    |_|    | /     /  \    \ |    | |    |")
+    print("|    |    ____ |    | |    ||     \--'\_|/|    |__|    ||    | |    |    ' |   |   '    |    .-.    ||     |    |    ||    |/____/ ")
+    print("|    |   |    ||    | |    ||     /___/|  |    .--.    ||    | |    |      |   |        |    | |    ||     |    |    ||    |\    \ ")
+    print("|    |   |_,  ||    | |    ||     \____|\ |    |  |    ||    | |    |     /   //        |    | |    ||\     \  /    /||    | |    |")
+    print("|\ ___\___/  /||____|/____/||____ '     /||____|  |____||\___\_|____|    /___//         |____| |____|| \_____\/____/ ||____| |____|")
+    print("| |   /____ / ||    /    | ||    /_____/ ||    |  |    || |    |    |   |`   |          |    | |    | \ |    ||    | /|    | |    |")
+    print(" \|___|    | / |____|____|/ |____|     | /|____|  |____| \|____|____|   |____|          |____| |____|  \|____||____|/ |____| |____|")
+    print("   \( |____|/    \(    )/     \( |_____|/   \(      )/      \(   )/       \(              \(     )/       \(    )/      \(     )/  ")
+    print("    '   )/        '    '       '    )/       '      '        '   '         '               '     '         '    '        '     '   ")
+    print("        '                           '                                                                                              ")
+
     print("Welcome to GDeauthor! Select a Network Interface that supports Monitor Mode and Packet Injection. Here are the list of available interfaces:")
     interfaces = listInterfaces()
     for key in interfaces:
@@ -54,9 +70,5 @@ def main():
     print("Channel for AP: ",MACs["AP Channel"])
     logPackets(MACs["AP Channel"],MACs["AP MAC"],MACs["Client MAC"])
     deactivateMonitorModeAir("wlan0")
-
-
-
-    
 main()
 
